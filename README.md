@@ -6,6 +6,28 @@ The InfluxDB schema updater is a small DevOps tool to manage the schema of an [I
 
 `influxdb-schema-updater [--help] [--dryrun] [--diff] [--force] [--config <schema_location>] [--url <url>]`
 
+
+docker build and run
+```sh
+docker build -t influxdb-schema-updater:latest .
+docker run -it influxdb-schema-updater:latest
+docker run -it --rm \
+    --name influxdb-schema-updater \
+    -e URL=http://influxdb:8086 \
+    -v ./t/data/test01:/etc/influxdb/schema/ \
+    influxdb-schema-updater:latest
+```
+
+```cmd
+docker build -t influxdb-schema-updater:latest .
+docker run -it influxdb-schema-updater:latest
+docker run -it --rm ^
+    --name influxdb-schema-updater ^
+    -e URL=http://influxdb:8086 ^
+    -v %cd%\t\data\test01:/etc/influxdb/schema/ ^
+    influxdb-schema-updater:latest
+```
+
 ## OPTIONS
 
 - **--help**
